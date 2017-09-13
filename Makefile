@@ -16,6 +16,10 @@ S3_CFG := /tmp/.s3cfg-$(AWS_BUCKET)
 deploy: ## Deploy to AWS S3
 	@make guard-AWS_ACCESS_KEY_ID
 	@make guard-AWS_SECRET_ACCESS_KEY
+
+	$(eval VERSION ?= $(shell /usr/bin/env node -e "console.log(require('./package.json').version);"))
+	$(eval DEPLOY_TIME ?= $(shell date +%s))
+
 	# Create s3cmd config
 	@echo $(S3_CFG)
 	@echo "[default]" > $(S3_CFG)
@@ -41,6 +45,7 @@ deploy: ## Deploy to AWS S3
 		--add-header=Cache-Control:public,max-age=3600,must-revalidate \
 		--remove-header=Expires \
 		--exclude "*" --include "*.json" \
+		--add-header=x-amz-meta-version:$(VERSION)-$(DEPLOY_TIME) \
 		--mime-type="application/vnd.nrfcloud.meta.v1+json" \
 		s3://$(AWS_BUCKET)/
 
