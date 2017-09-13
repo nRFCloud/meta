@@ -1,0 +1,34 @@
+{
+  "name": "@nrfcloud/meta",
+  "version": "1.0.0",
+  "description": "Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nRFCloud/meta.git"
+  },
+  "keywords": [
+    "nRFCloud",
+    "IoT",
+    "NordicSemiconductor"
+  ],
+  "author": "Nordic Semiconductor ASA | nordicsemi.no",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/nRFCloud/meta/issues"
+  },
+  "homepage": "https://github.com/nRFCloud/meta#readme",
+  "engines": {
+    "node": ">=6.10.2"
+  },
+  "dependencies": {
+    "@nrfcloud/models": "^1.0.1"
+  },
+  "devDependencies": {
+    "es6-promise": "^4.1.1",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
