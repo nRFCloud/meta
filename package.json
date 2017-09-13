@@ -4,7 +4,8 @@
   "description": "Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commitmsg": "commitlint -e"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,10 @@
     "@nrfcloud/models": "^1.0.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^3.2.0",
+    "@commitlint/config-angular": "^3.1.1",
     "es6-promise": "^4.1.1",
+    "husky": "^0.14.3",
     "isomorphic-fetch": "^2.2.1"
   }
 }
