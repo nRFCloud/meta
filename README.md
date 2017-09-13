@@ -1,5 +1,7 @@
 # meta.nrfcloud.com
 
+[![Build Status](https://travis-ci.org/nRFCloud/meta.svg?branch=master)](https://travis-ci.org/nRFCloud/meta)
+
 Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com/.
 
 The document is the JSON representation of an [ApiIndex document](https://github.com/nRFCloud/models#apiindex), created with [generate-index.js](./scripts/generate-index.js), with the Content-Type 
