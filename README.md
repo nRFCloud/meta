@@ -18,3 +18,8 @@ Here is a JavaScript example of this process using the
 
 Here is a JavaScript example of this process using just the JSON data: 
 [./docs/example-no-models.js](./docs/example-no-models.js).
+
+## Deployment
+
+The document at https://meta.nrfcloud.com/ will be updated for every tag 
+[through travis](./.travis.yml).
