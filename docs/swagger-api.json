@@ -1,0 +1,59 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "meta.nrfcloud.com",
+        "description": "Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com/.",
+        "version": "1.0.0"
+    },
+    "host": "meta.nrfcloud.com",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/vnd.nrfcloud.meta.v1+json"
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Returns a JSON representation of an [ApiIndex document](https://github.com/nRFCloud/models#apiindex).",
+                        "headers": {
+                            "content-type": {
+                                "type": "string",
+                                "description": "\"application/vnd.nrfcloud.meta.v1+json\""
+                            },
+                            "content-length": {
+                                "type": "number",
+                                "description": "e.g. \"1140\""
+                            },
+                            "date": {
+                                "type": "string",
+                                "description": "e.g. \"Wed, 13 Sep 2017 14:59:09 GMT\""
+                            },
+                            "x-amz-meta-version": {
+                                "type": "string",
+                                "description": "e.g. \"1.0.0-1505314746\""
+                            },
+                            "cache-control": {
+                                "type": "string",
+                                "description": "e.g. \"public,max-age=3600,must-revalidate\""
+                            },
+                            "last-modified": {
+                                "type": "string",
+                                "description": "e.g. \"Wed, 13 Sep 2017 14:59:09 GMT\""
+                            },
+                            "etag": {
+                                "type": "string",
+                                "description": "e.g. \"19094a9466b180521260737bf374f6a7\""
+                            }
+                        },
+                        "schema": {
+                            "$ref": "./ApiIndex.schema.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

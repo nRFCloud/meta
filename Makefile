@@ -7,13 +7,26 @@ dist/index.json: scripts/generate-index.js
 	@mkdir -p $(dir $@)
 	node $< > $@
 
+# Build the API docs
+
+dist/swagger-api.yaml: docs/swagger-api.json swagger/swagger-codegen-cli.jar
+	mkdir -p $(dir $@)
+	cp $< swagger
+	cp ./node_modules/@nrfcloud/models/dist/model/*.schema.json swagger
+	java -jar swagger/swagger-codegen-cli.jar generate -l swagger-yaml -i swagger/swagger-api.json -o swagger
+	cp swagger/swagger.yaml $@
+
+swagger/swagger-codegen-cli.jar:
+	mkdir -p $(dir $@)
+	wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.3/swagger-codegen-cli-2.2.3.jar -O $@
+
 # Deploy
 
 AWS_BUCKET ?= meta.nrfcloud.com
 AWS_REGION ?= us-east-1
 S3_CFG := /tmp/.s3cfg-$(AWS_BUCKET)
 
-deploy: ## Deploy to AWS S3
+deploy: dist/index.json dist/swagger-api.yaml ## Deploy to AWS S3
 	@make guard-AWS_ACCESS_KEY_ID
 	@make guard-AWS_SECRET_ACCESS_KEY
 
@@ -47,6 +60,16 @@ deploy: ## Deploy to AWS S3
 		--exclude "*" --include "*.json" \
 		--add-header=x-amz-meta-version:$(VERSION)-$(DEPLOY_TIME) \
 		--mime-type="application/vnd.nrfcloud.meta.v1+json" \
+		s3://$(AWS_BUCKET)/
+
+	# Expires 24 hours for yaml files
+	s3cmd -c $(S3_CFG) \
+		modify --recursive \
+		--add-header=Cache-Control:public,max-age=86400 \
+		--remove-header=Expires \
+		--exclude "*" --include "*.yaml" \
+		--add-header=x-amz-meta-version:$(VERSION)-$(DEPLOY_TIME) \
+		--mime-type="text/vnd.yaml" \
 		s3://$(AWS_BUCKET)/
 
 # Helper
