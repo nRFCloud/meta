@@ -19,9 +19,6 @@ after_success:
     if [ -n "${TRAVIS_TAG}" ]; then
       make deploy
     fi
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
 matrix:
   include:
     - node_js: 'node'
