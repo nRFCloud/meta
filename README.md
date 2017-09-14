@@ -13,12 +13,22 @@ You discover endpoints by iterating over the `links` array, and filter
 are interested in. The `rel` property contains information about the 
 stage of the endpoint in the notation `stage@<stage-identifier>`.
 
-Here is a JavaScript example of this process using the 
-[@nrfcloud/models](https://github.com/nRFCloud/models) package: 
-[./docs/example.js](./docs/example.js).
+See [this test](./__tests__/index.spec.js) for a JavaScript example of this process using the 
+[@nrfcloud/models](https://github.com/nRFCloud/models) package.
 
-Here is a JavaScript example of this process using just the JSON data: 
-[./docs/example-no-models.js](./docs/example-no-models.js).
+Here is a JavaScript example of this process using just the JSON data:
+
+```JavaScript
+const lookForSubject = 'https://aws.amazon.com/iot-platform/'
+const lookForStage = 'stage@prod'
+
+fetch('https://meta.nrfcloud.com/')
+    .then(response => response.json())
+    .then(({links}) => links.filter(({subject, rel}) => subject === lookForSubject && rel.indexOf(lookForStage) > -1)[0])
+    .then(endpoint => {
+      console.log(endpoint.href)
+    })
+```
 
 ## Deployment
 

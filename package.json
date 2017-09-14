@@ -4,7 +4,9 @@
   "description": "Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "make dist/index.json && jest",
+    "lint": "standard",
+    "precommit": "npm run lint && npm run test",
     "commitmsg": "commitlint -e"
   },
   "repository": {
@@ -31,8 +33,8 @@
   "devDependencies": {
     "@commitlint/cli": "^3.2.0",
     "@commitlint/config-angular": "^3.1.1",
-    "es6-promise": "^4.1.1",
     "husky": "^0.14.3",
-    "isomorphic-fetch": "^2.2.1"
+    "jest": "^21.1.0",
+    "standard": "^10.0.3"
   }
 }

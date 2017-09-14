@@ -30,6 +30,8 @@ deploy: dist/index.json dist/swagger-api.yaml ## Deploy to AWS S3
 	@make guard-AWS_ACCESS_KEY_ID
 	@make guard-AWS_SECRET_ACCESS_KEY
 
+	npm test
+
 	$(eval VERSION ?= $(shell /usr/bin/env node -e "console.log(require('./package.json').version);"))
 	$(eval DEPLOY_TIME ?= $(shell date +%s))
 
