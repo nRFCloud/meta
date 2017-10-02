@@ -1,6 +1,6 @@
 {
   "name": "@nrfcloud/meta",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com",
   "main": "index.js",
   "scripts": {
