@@ -28,13 +28,13 @@
     "node": ">=6.10.2"
   },
   "dependencies": {
-    "@nrfcloud/models": "^1.0.2"
+    "@nrfcloud/models": "^1.1.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^3.2.0",
     "@commitlint/config-angular": "^3.1.1",
     "husky": "^0.14.3",
-    "jest": "^21.1.0",
+    "jest": "^21.2.1",
     "standard": "^10.0.3"
   }
 }

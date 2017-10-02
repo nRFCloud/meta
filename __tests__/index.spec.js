@@ -2,7 +2,7 @@
 
 const {readFile} = require('fs')
 const {promisify} = require('util')
-const {ApiIndex, URLValue} = require('@nrfcloud/models')
+const {ApiIndex, URLValue, Status} = require('@nrfcloud/models')
 
 const stages = [
   'dev',
@@ -27,20 +27,24 @@ describe('index.json', () => {
   })
 
   it('should have an AWS IoT endpoint for every stage', () => {
-    stages
-            .map(stage => {
-              const awsItoSubject = new URLValue('https://aws.amazon.com/iot-platform/')
-              const links = index.links.filter(({rel, subject}) => rel.indexOf(`stage@${stage}`) >= 0 && subject.equals(awsItoSubject))
-              expect(links).toHaveLength(1)
-            })
+    const links = [...stages
+      .map(stage => {
+        const awsItoSubject = new URLValue('https://aws.amazon.com/iot-platform/')
+        return index.links.filter(({rel, subject}) => rel.indexOf(`stage@${stage}`) >= 0 && subject.equals(awsItoSubject))
+      })]
+    expect(links).toHaveLength(3)
   })
 
   it('should have an REST API endpoint for every stage', () => {
-    stages
-            .map(stage => {
-              const nrfCloudRestApiSubject = new URLValue('https://nrfcloud.com/#api')
-              const links = index.links.filter(({rel, subject}) => rel.indexOf(`stage@${stage}`) >= 0 && subject.equals(nrfCloudRestApiSubject))
-              expect(links).toHaveLength(1)
-            })
+    const links = [...stages.map(stage => {
+      const nrfCloudRestApiSubject = new URLValue('https://nrfcloud.com/#api')
+      return index.links.filter(({rel, subject}) => rel.indexOf(`stage@${stage}`) >= 0 && subject.equals(nrfCloudRestApiSubject))
+    })]
+    expect(links).toHaveLength(3)
+  })
+
+  it('should have links to the status endpoint for every stage', () => {
+    const links = [...stages.map(stage => index.links.filter(({rel, subject}) => rel.indexOf(`stage@${stage}`) >= 0 && subject.equals(Status.$context)))]
+    expect(links).toHaveLength(3)
   })
 })
