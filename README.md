@@ -1,9 +1,8 @@
 # meta.nrfcloud.com [![API v1.0.0](https://img.shields.io/badge/API-v1.0.0-blue.svg)](https://meta.nrfcloud.com/swagger-api.yaml?v1.0.0)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/nRFCloud/meta.svg)](https://greenkeeper.io/)
-
 [![Build Status](https://travis-ci.org/nRFCloud/meta.svg?branch=master)](https://travis-ci.org/nRFCloud/meta)
 [![Swagger UI](https://img.shields.io/badge/Swagger-UI-orange.svg)](http://petstore.swagger.io/?url=https%3A%2F%2Fmeta.nrfcloud.com%2Fswagger-api.yaml%3Fv1.0.0)
+[![Greenkeeper badge](https://badges.greenkeeper.io/nRFCloud/meta.svg)](https://greenkeeper.io/)
 
 Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com/.
 
