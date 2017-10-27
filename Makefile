@@ -23,8 +23,7 @@ swagger/swagger-codegen-cli.jar:
 # Deploy
 
 AWS_BUCKET ?= meta.nrfcloud.com
-AWS_REGION ?= us-east-1
-S3_CFG := /tmp/.s3cfg-$(AWS_BUCKET)
+AWS_DEFAULT_REGION ?= us-east-1
 
 deploy: dist/index.json dist/swagger-api.yaml ## Deploy to AWS S3
 	@make guard-AWS_ACCESS_KEY_ID
@@ -35,28 +34,20 @@ deploy: dist/index.json dist/swagger-api.yaml ## Deploy to AWS S3
 	$(eval VERSION ?= $(shell /usr/bin/env node -e "console.log(require('./package.json').version);"))
 	$(eval DEPLOY_TIME ?= $(shell date +%s))
 
-	# Create s3cmd config
-	@echo $(S3_CFG)
-	@echo "[default]" > $(S3_CFG)
-	@echo "access_key = $(AWS_ACCESS_KEY_ID)" >> $(S3_CFG)
-	@echo "secret_key = $(AWS_SECRET_ACCESS_KEY)" >> $(S3_CFG)
-	@echo "bucket_location = $(AWS_REGION)" >> $(S3_CFG)
-
 	# Create bucket if not exists
-	@if [[ `s3cmd -c $(S3_CFG) ls | grep s3://$(AWS_BUCKET) | wc -l` -eq 1 ]]; then \
+	@if [[ `s3cmd ls | grep s3://$(AWS_BUCKET) | wc -l` -eq 1 ]]; then \
 		echo "Bucket exists"; \
 	else \
-		s3cmd -c $(S3_CFG) mb s3://$(AWS_BUCKET); \
-		s3cmd -c $(S3_CFG) ws-create s3://$(AWS_BUCKET)/ --ws-index=index.json --ws-error=404.html; \
+		s3cmd mb s3://$(AWS_BUCKET); \
+		s3cmd ws-create s3://$(AWS_BUCKET)/ --ws-index=index.json --ws-error=404.html; \
 	fi
 
 	# Upload
-	s3cmd -c $(S3_CFG) \
+	s3cmd \
 		sync -P -M --no-mime-magic --delete-removed ./dist/ s3://$(AWS_BUCKET)/
 
 	# Expires 60 minutes for json files
-	s3cmd -c $(S3_CFG) \
-		modify --recursive \
+	s3cmd modify --recursive \
 		--add-header=Cache-Control:public,max-age=3600,must-revalidate \
 		--remove-header=Expires \
 		--exclude "*" --include "*.json" \
@@ -65,8 +56,7 @@ deploy: dist/index.json dist/swagger-api.yaml ## Deploy to AWS S3
 		s3://$(AWS_BUCKET)/
 
 	# Expires 24 hours for yaml files
-	s3cmd -c $(S3_CFG) \
-		modify --recursive \
+	s3cmd modify --recursive \
 		--add-header=Cache-Control:public,max-age=86400 \
 		--remove-header=Expires \
 		--exclude "*" --include "*.yaml" \
