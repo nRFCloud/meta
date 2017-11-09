@@ -49,4 +49,4 @@ const index = new ApiIndex([
   )
 ])
 
-console.log(JSON.stringify(index, '', 2))
+console.log(JSON.stringify(index, null, 2))
