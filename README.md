@@ -1,7 +1,7 @@
 # meta.nrfcloud.com [![API v2.0.0](https://img.shields.io/badge/API-v2.0.0-blue.svg)](https://meta.nrfcloud.com/swagger-api.yaml?v2.0.0)
 
 [![Build Status](https://travis-ci.org/nRFCloud/meta.svg?branch=master)](https://travis-ci.org/nRFCloud/meta)
-[![Swagger UI](https://img.shields.io/badge/Swagger-UI-orange.svg)](http://petstore.swagger.io/?url=https%3A%2F%2Fmeta.nrfcloud.com%2Fswagger-api.yaml%3Fv1.0.0)
+[![Swagger UI](https://img.shields.io/badge/Swagger-UI-orange.svg)](http://petstore.swagger.io/?url=https%3A%2F%2Fmeta.nrfcloud.com%2Fswagger-api.yaml%3Fv2.0.0)
 [![Greenkeeper badge](https://badges.greenkeeper.io/nRFCloud/meta.svg)](https://greenkeeper.io/)
 [![DeepScan Grade](https://deepscan.io/api/projects/837/branches/1777/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=837&bid=1777)
 [![Known Vulnerabilities](https://snyk.io/test/github/nrfcloud/models/badge.svg)](https://snyk.io/test/github/nrfcloud/models)
