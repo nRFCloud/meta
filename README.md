@@ -1,4 +1,4 @@
-# meta.nrfcloud.com [![API v1.0.0](https://img.shields.io/badge/API-v1.0.0-blue.svg)](https://meta.nrfcloud.com/swagger-api.yaml?v1.0.0)
+# meta.nrfcloud.com [![API v2.0.0](https://img.shields.io/badge/API-v2.0.0-blue.svg)](https://meta.nrfcloud.com/swagger-api.yaml?v2.0.0)
 
 [![Build Status](https://travis-ci.org/nRFCloud/meta.svg?branch=master)](https://travis-ci.org/nRFCloud/meta)
 [![Swagger UI](https://img.shields.io/badge/Swagger-UI-orange.svg)](http://petstore.swagger.io/?url=https%3A%2F%2Fmeta.nrfcloud.com%2Fswagger-api.yaml%3Fv1.0.0)
@@ -9,7 +9,7 @@
 Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com/.
 
 The document is the JSON representation of an [ApiIndex document](https://github.com/nRFCloud/models#apiindex), created with [generate-index.js](./scripts/generate-index.js), with the Content-Type 
-`application/vnd.nrfcloud.meta.v1+json`: 
+`application/vnd.nrfcloud.meta.v2+json`: 
 
 You discover endpoints by iterating over the `links` array, and filter
 [the links](https://github.com/nRFCloud/models#link) by the subject you

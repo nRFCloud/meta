@@ -4,7 +4,8 @@
   "description": "Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com",
   "main": "index.js",
   "scripts": {
-    "test": "make dist/index.json && jest",
+    "pretest": "make dist/index.json",
+    "test": "jest",
     "lint": "standard",
     "precommit": "npm run lint && npm run test",
     "commitmsg": "commitlint -e"
@@ -28,7 +29,7 @@
     "node": ">=6.10.2"
   },
   "dependencies": {
-    "@nrfcloud/models": "^1.5.0"
+    "@nrfcloud/models": "^2.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^6.0.1",

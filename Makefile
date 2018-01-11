@@ -12,7 +12,7 @@ dist/index.json: scripts/generate-index.js
 dist/swagger-api.yaml: docs/swagger-api.json swagger/swagger-codegen-cli.jar
 	mkdir -p $(dir $@)
 	cp $< swagger
-	cp ./node_modules/@nrfcloud/models/dist/model/*.schema.json swagger
+	cp ./node_modules/@nrfcloud/models/dist/model/schema/*.json swagger
 	java -jar swagger/swagger-codegen-cli.jar generate -l swagger-yaml -i swagger/swagger-api.json -o swagger
 	cp swagger/swagger.yaml $@
 
@@ -52,7 +52,7 @@ deploy: dist/index.json dist/swagger-api.yaml ## Deploy to AWS S3
 		--remove-header=Expires \
 		--exclude "*" --include "*.json" \
 		--add-header=x-amz-meta-version:$(VERSION)-$(DEPLOY_TIME) \
-		--mime-type="application/vnd.nrfcloud.meta.v1+json" \
+		--mime-type="application/vnd.nrfcloud.meta.v2+json" \
 		s3://$(AWS_BUCKET)/
 
 	# Expires 24 hours for yaml files

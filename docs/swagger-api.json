@@ -3,14 +3,14 @@
     "info": {
         "title": "meta.nrfcloud.com",
         "description": "Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com/.",
-        "version": "1.0.0"
+        "version": "2.0.0"
     },
     "host": "meta.nrfcloud.com",
     "schemes": [
         "https"
     ],
     "produces": [
-        "application/vnd.nrfcloud.meta.v1+json"
+        "application/vnd.nrfcloud.meta.v2+json"
     ],
     "paths": {
         "/": {
@@ -21,7 +21,7 @@
                         "headers": {
                             "content-type": {
                                 "type": "string",
-                                "description": "\"application/vnd.nrfcloud.meta.v1+json\""
+                                "description": "\"application/vnd.nrfcloud.meta.v2+json\""
                             },
                             "content-length": {
                                 "type": "number",
@@ -49,7 +49,7 @@
                             }
                         },
                         "schema": {
-                            "$ref": "./ApiIndex.schema.json"
+                            "$ref": "./ApiIndex.json"
                         }
                     }
                 }
