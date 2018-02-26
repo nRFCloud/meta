@@ -5,14 +5,15 @@ cache:
 notifications:
   email: false
 before_install:
-  - npm install -g npmc
-  - npmc install -g greenkeeper-lockfile@1
+  - npm install -g npm@
+  - npm install -g greenkeeper-lockfile@1
   - pip install --user s3cmd
 install:
-  - npmc ci
+  - npm i
 before_script: greenkeeper-lockfile-update
 after_script: greenkeeper-lockfile-upload
 script:
+  - npm run lint
   - make dist/index.json
 after_success:
   - |
