@@ -1,6 +1,6 @@
 const models = require('@nrfcloud/models')
 
-const {ApiIndex, Link, URLValue} = models
+const { ApiIndex, Link, URLValue } = models
 
 const index = new ApiIndex([
   // self
