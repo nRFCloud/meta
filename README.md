@@ -6,7 +6,7 @@
 [![DeepScan Grade](https://deepscan.io/api/projects/837/branches/1777/badge/grade.svg)](https://deepscan.io/dashboard/#view=project&pid=837&bid=1777)
 [![Known Vulnerabilities](https://snyk.io/test/github/nrfcloud/models/badge.svg)](https://snyk.io/test/github/nrfcloud/models)
 
-Provides a document for service discovery related to nRFCloud.com on https://meta.nrfcloud.com/.
+Provides a document for service discovery related to nRFCloud.com.
 
 The document is the JSON representation of an [ApiIndex document](https://github.com/nRFCloud/models#apiindex), created with [generate-index.js](./scripts/generate-index.js), with the Content-Type 
 `application/vnd.nrfcloud.meta.v2+json`: 
@@ -33,7 +33,3 @@ fetch('https://meta.nrfcloud.com/')
     })
 ```
 
-## Deployment
-
-The document at https://meta.nrfcloud.com/ will be updated for every tag 
-[through travis](./.travis.yml).
